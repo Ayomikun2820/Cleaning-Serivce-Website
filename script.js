@@ -32,6 +32,15 @@ navList.querySelectorAll('.nav__link').forEach(link => {
   });
 });
 
+// Close mobile menu when tapping outside
+document.addEventListener('click', e => {
+  if (navList.classList.contains('open') && !navList.contains(e.target) && !hamburger.contains(e.target)) {
+    navList.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
 // ---- Active Nav Link on Scroll ----
 const sections = document.querySelectorAll('section[id]');
 function updateActiveNav() {
