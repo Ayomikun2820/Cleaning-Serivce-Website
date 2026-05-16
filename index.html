@@ -10,8 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('2ehz5yNGGeHpxBm7g');</script>
 </head>
 <body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
@@ -35,7 +40,7 @@
           <i class="fas fa-phone"></i>
           <span>(800) 555-1234</span>
         </a>
-        <a href="#contact" class="btn btn--primary nav__cta">Get a Quote</a>
+        <a href="#contact" class="btn btn--primary nav__cta" data-magnetic>Get a Quote</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -45,6 +50,17 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
+    <div class="hero__particles" aria-hidden="true">
+      <span class="particle" style="--x:12%;--y:25%;--d:9s;--delay:0s;--s:8px"></span>
+      <span class="particle" style="--x:80%;--y:15%;--d:11s;--delay:1s;--s:6px"></span>
+      <span class="particle" style="--x:55%;--y:70%;--d:8s;--delay:2s;--s:10px"></span>
+      <span class="particle" style="--x:25%;--y:60%;--d:12s;--delay:0.5s;--s:5px"></span>
+      <span class="particle" style="--x:70%;--y:45%;--d:10s;--delay:3s;--s:7px"></span>
+      <span class="particle" style="--x:40%;--y:20%;--d:7s;--delay:1.5s;--s:9px"></span>
+      <span class="particle" style="--x:90%;--y:65%;--d:13s;--delay:0.8s;--s:5px"></span>
+      <span class="particle" style="--x:5%;--y:80%;--d:9s;--delay:2.5s;--s:7px"></span>
+    </div>
+
     <div class="hero__bg-shapes" aria-hidden="true">
       <div class="hero__shape hero__shape--1"></div>
       <div class="hero__shape hero__shape--2"></div>
@@ -53,22 +69,22 @@
 
     <div class="container hero__container">
       <div class="hero__content">
-        <div class="hero__badge">
+        <div class="hero__badge" data-reveal="fade-down">
           <i class="fas fa-star"></i>
           #1 Rated Cleaning Service
         </div>
-        <h1 class="hero__title">
+        <h1 class="hero__title" data-reveal="fade-up">
           We Make Your Home<br>
           <span class="hero__highlight">Sparkle</span> Like<br>
           Never Before
         </h1>
-        <p class="hero__subtitle">
+        <p class="hero__subtitle" data-reveal="fade-up" style="--ri:1">
           Professional, eco-friendly cleaning tailored to your needs.
           Trusted by over 10,000 happy customers. Book in minutes,
           enjoy a spotless home.
         </p>
-        <div class="hero__cta">
-          <a href="#contact" class="btn btn--primary btn--lg">
+        <div class="hero__cta" data-reveal="fade-up" style="--ri:2">
+          <a href="#contact" class="btn btn--primary btn--lg" data-magnetic>
             <i class="fas fa-calendar-check"></i>
             Book a Cleaning
           </a>
@@ -77,7 +93,7 @@
             Our Services
           </a>
         </div>
-        <div class="hero__trust">
+        <div class="hero__trust" data-reveal="fade-up" style="--ri:3">
           <div class="hero__trust-item">
             <i class="fas fa-shield-halved"></i>
             <span>Insured &amp; Bonded</span>
@@ -93,15 +109,16 @@
         </div>
       </div>
 
-      <div class="hero__visual">
-        <div class="hero__image">
+      <div class="hero__visual" data-reveal="fade-left">
+        <div class="hero__image" id="heroImage">
           <img
-            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=620&q=80&fit=crop&crop=center"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&fit=crop&crop=center"
             alt="Professional cleaner at work"
             loading="eager"
             width="560"
             height="620"
           >
+          <div class="hero__img-shine" aria-hidden="true"></div>
           <div class="hero__img-decoration" aria-hidden="true"></div>
         </div>
 
@@ -132,8 +149,8 @@
     </div>
 
     <div class="hero__wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,60 C360,100 1080,0 1440,70 L1440,100 L0,100 Z" fill="#ffffff"/>
+      <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,80 C240,120 480,40 720,80 C960,120 1200,40 1440,80 L1440,120 L0,120 Z" fill="#ffffff"/>
       </svg>
     </div>
   </section>
@@ -141,97 +158,135 @@
   <!-- ===== SERVICES ===== -->
   <section class="services section" id="services">
     <div class="container">
-      <div class="section__header">
+      <div class="section__header" data-reveal="fade-up">
         <span class="section__tag">What We Offer</span>
         <h2 class="section__title">Our Cleaning <span>Services</span></h2>
         <p class="section__subtitle">From routine maintenance to deep cleaning, we've got every corner covered with our professional services.</p>
       </div>
 
       <div class="services__grid">
-        <article class="service-card" style="--delay:0s">
-          <div class="service-card__icon">
-            <i class="fas fa-house"></i>
+
+        <article class="service-card" data-tilt data-reveal="fade-up" style="--delay:0s">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=480&q=80&fit=crop&crop=center" alt="Clean bright kitchen" loading="lazy">
+            <div class="service-card__img-overlay"></div>
           </div>
-          <h3>Home Cleaning</h3>
-          <p>Regular maintenance cleaning for every room in your home — fresh, tidy, and hygienic every visit.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Living &amp; Bedrooms</li>
-            <li><i class="fas fa-check"></i> Kitchen &amp; Bathrooms</li>
-            <li><i class="fas fa-check"></i> Floors &amp; Surfaces</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon">
+              <i class="fas fa-house"></i>
+            </div>
+            <h3>Home Cleaning</h3>
+            <p>Regular maintenance cleaning for every room in your home — fresh, tidy, and hygienic every visit.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Living &amp; Bedrooms</li>
+              <li><i class="fas fa-check"></i> Kitchen &amp; Bathrooms</li>
+              <li><i class="fas fa-check"></i> Floors &amp; Surfaces</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
-        <article class="service-card" style="--delay:.1s">
-          <div class="service-card__icon service-card__icon--teal">
-            <i class="fas fa-building"></i>
+        <article class="service-card" data-tilt data-reveal="fade-up" style="--delay:.08s">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=480&q=80&fit=crop&crop=center" alt="Clean modern office" loading="lazy">
+            <div class="service-card__img-overlay"></div>
           </div>
-          <h3>Office Cleaning</h3>
-          <p>Create a productive environment with our thorough commercial and office cleaning solutions.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Workstations &amp; Desks</li>
-            <li><i class="fas fa-check"></i> Meeting Rooms</li>
-            <li><i class="fas fa-check"></i> Common Areas</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--teal">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3>Office Cleaning</h3>
+            <p>Create a productive environment with our thorough commercial and office cleaning solutions.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Workstations &amp; Desks</li>
+              <li><i class="fas fa-check"></i> Meeting Rooms</li>
+              <li><i class="fas fa-check"></i> Common Areas</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
-        <article class="service-card service-card--featured" style="--delay:.2s">
+        <article class="service-card service-card--featured" data-tilt data-reveal="fade-up" style="--delay:.16s">
           <div class="service-card__badge">Most Popular</div>
-          <div class="service-card__icon service-card__icon--white">
-            <i class="fas fa-soap"></i>
+          <div class="service-card__img service-card__img--featured">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=480&q=80&fit=crop&crop=center" alt="Professional deep cleaning" loading="lazy">
+            <div class="service-card__img-overlay service-card__img-overlay--deep"></div>
           </div>
-          <h3>Deep Cleaning</h3>
-          <p>A thorough top-to-bottom clean that reaches every nook and cranny — perfect for seasonal refreshes.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Behind Appliances</li>
-            <li><i class="fas fa-check"></i> Inside Cabinets</li>
-            <li><i class="fas fa-check"></i> Grout &amp; Tiles</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--white">
+              <i class="fas fa-soap"></i>
+            </div>
+            <h3>Deep Cleaning</h3>
+            <p>A thorough top-to-bottom clean that reaches every nook and cranny — perfect for seasonal refreshes.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Behind Appliances</li>
+              <li><i class="fas fa-check"></i> Inside Cabinets</li>
+              <li><i class="fas fa-check"></i> Grout &amp; Tiles</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
-        <article class="service-card" style="--delay:.1s">
-          <div class="service-card__icon service-card__icon--purple">
-            <i class="fas fa-water"></i>
+        <article class="service-card" data-tilt data-reveal="fade-up" style="--delay:.08s">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=480&q=80&fit=crop&crop=center" alt="Window cleaning service" loading="lazy">
+            <div class="service-card__img-overlay"></div>
           </div>
-          <h3>Window Cleaning</h3>
-          <p>Crystal-clear windows inside and out using streak-free solutions for a flawless finish.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Interior &amp; Exterior</li>
-            <li><i class="fas fa-check"></i> Screens &amp; Frames</li>
-            <li><i class="fas fa-check"></i> High-Rise Capable</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--purple">
+              <i class="fas fa-water"></i>
+            </div>
+            <h3>Window Cleaning</h3>
+            <p>Crystal-clear windows inside and out using streak-free solutions for a flawless finish.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Interior &amp; Exterior</li>
+              <li><i class="fas fa-check"></i> Screens &amp; Frames</li>
+              <li><i class="fas fa-check"></i> High-Rise Capable</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
-        <article class="service-card" style="--delay:.2s">
-          <div class="service-card__icon service-card__icon--orange">
-            <i class="fas fa-couch"></i>
+        <article class="service-card" data-tilt data-reveal="fade-up" style="--delay:.16s">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=480&q=80&fit=crop&crop=center" alt="Carpet cleaning service" loading="lazy">
+            <div class="service-card__img-overlay"></div>
           </div>
-          <h3>Carpet Cleaning</h3>
-          <p>Professional steam cleaning that removes deep-set stains, allergens, and odors from all carpet types.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Steam Extraction</li>
-            <li><i class="fas fa-check"></i> Stain Treatment</li>
-            <li><i class="fas fa-check"></i> Odor Elimination</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--orange">
+              <i class="fas fa-couch"></i>
+            </div>
+            <h3>Carpet Cleaning</h3>
+            <p>Professional steam cleaning that removes deep-set stains, allergens, and odors from all carpet types.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Steam Extraction</li>
+              <li><i class="fas fa-check"></i> Stain Treatment</li>
+              <li><i class="fas fa-check"></i> Odor Elimination</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
-        <article class="service-card" style="--delay:.3s">
-          <div class="service-card__icon service-card__icon--green">
-            <i class="fas fa-key"></i>
+        <article class="service-card" data-tilt data-reveal="fade-up" style="--delay:.24s">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=480&q=80&fit=crop&crop=center" alt="Move in out cleaning" loading="lazy">
+            <div class="service-card__img-overlay"></div>
           </div>
-          <h3>Move In / Out</h3>
-          <p>Comprehensive cleaning for property transitions. Leave spotless or start fresh in your new home.</p>
-          <ul class="service-card__list">
-            <li><i class="fas fa-check"></i> Full Property Clean</li>
-            <li><i class="fas fa-check"></i> Appliance Cleaning</li>
-            <li><i class="fas fa-check"></i> Deposit Protection</li>
-          </ul>
-          <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--green">
+              <i class="fas fa-key"></i>
+            </div>
+            <h3>Move In / Out</h3>
+            <p>Comprehensive cleaning for property transitions. Leave spotless or start fresh in your new home.</p>
+            <ul class="service-card__list">
+              <li><i class="fas fa-check"></i> Full Property Clean</li>
+              <li><i class="fas fa-check"></i> Appliance Cleaning</li>
+              <li><i class="fas fa-check"></i> Deposit Protection</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Book Now <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -239,7 +294,7 @@
   <!-- ===== ABOUT ===== -->
   <section class="about section" id="about">
     <div class="container about__container">
-      <div class="about__images">
+      <div class="about__images" data-reveal="fade-right">
         <div class="about__img-main">
           <img
             src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=560&q=80&fit=crop&crop=center"
@@ -253,14 +308,21 @@
         </div>
         <div class="about__img-secondary">
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=280&q=80&fit=crop&crop=center"
-            alt="Clean sparkling kitchen"
+            src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=280&q=80&fit=crop&crop=center"
+            alt="Sparkling clean kitchen"
             loading="lazy" width="240" height="280"
+          >
+        </div>
+        <div class="about__img-tertiary">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=220&q=80&fit=crop&crop=center"
+            alt="Professional cleaning result"
+            loading="lazy" width="200" height="200"
           >
         </div>
       </div>
 
-      <div class="about__content">
+      <div class="about__content" data-reveal="fade-left">
         <span class="section__tag">Why Choose Us</span>
         <h2 class="section__title">The Cleanest Choice <span>You'll Ever Make</span></h2>
         <p class="about__lead">
@@ -270,7 +332,7 @@
         </p>
 
         <div class="about__features">
-          <div class="about__feature">
+          <div class="about__feature" data-reveal="fade-up" style="--delay:0s">
             <div class="about__feature-icon">
               <i class="fas fa-certificate"></i>
             </div>
@@ -279,7 +341,7 @@
               <p>All cleaners pass rigorous background checks, training, and certification before entering your home.</p>
             </div>
           </div>
-          <div class="about__feature">
+          <div class="about__feature" data-reveal="fade-up" style="--delay:.08s">
             <div class="about__feature-icon">
               <i class="fas fa-leaf"></i>
             </div>
@@ -288,7 +350,7 @@
               <p>We use only non-toxic, biodegradable cleaning products safe for your family and pets.</p>
             </div>
           </div>
-          <div class="about__feature">
+          <div class="about__feature" data-reveal="fade-up" style="--delay:.16s">
             <div class="about__feature-icon">
               <i class="fas fa-shield-halved"></i>
             </div>
@@ -297,7 +359,7 @@
               <p>We're fully insured for your peace of mind. Any accidental damage is fully covered.</p>
             </div>
           </div>
-          <div class="about__feature">
+          <div class="about__feature" data-reveal="fade-up" style="--delay:.24s">
             <div class="about__feature-icon">
               <i class="fas fa-rotate-left"></i>
             </div>
@@ -308,7 +370,7 @@
           </div>
         </div>
 
-        <a href="#contact" class="btn btn--primary">
+        <a href="#contact" class="btn btn--primary" data-magnetic>
           Get a Free Quote <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -318,14 +380,14 @@
   <!-- ===== PROCESS ===== -->
   <section class="process section">
     <div class="container">
-      <div class="section__header">
+      <div class="section__header" data-reveal="fade-up">
         <span class="section__tag">Simple Process</span>
         <h2 class="section__title">How It <span>Works</span></h2>
         <p class="section__subtitle">Getting a spotless home has never been easier. Three simple steps and we handle the rest.</p>
       </div>
 
       <div class="process__grid">
-        <div class="process__step">
+        <div class="process__step" data-reveal="fade-up" style="--delay:0s">
           <div class="process__number" aria-hidden="true">01</div>
           <div class="process__icon">
             <i class="fas fa-calendar-alt"></i>
@@ -335,10 +397,13 @@
         </div>
 
         <div class="process__connector" aria-hidden="true">
-          <i class="fas fa-chevron-right"></i>
+          <svg viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="12" x2="60" y2="12" class="connector-line"/>
+            <polyline points="52,4 68,12 52,20" class="connector-arrow"/>
+          </svg>
         </div>
 
-        <div class="process__step">
+        <div class="process__step" data-reveal="fade-up" style="--delay:.12s">
           <div class="process__number" aria-hidden="true">02</div>
           <div class="process__icon">
             <i class="fas fa-user-tie"></i>
@@ -348,10 +413,13 @@
         </div>
 
         <div class="process__connector" aria-hidden="true">
-          <i class="fas fa-chevron-right"></i>
+          <svg viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="12" x2="60" y2="12" class="connector-line"/>
+            <polyline points="52,4 68,12 52,20" class="connector-arrow"/>
+          </svg>
         </div>
 
-        <div class="process__step">
+        <div class="process__step" data-reveal="fade-up" style="--delay:.24s">
           <div class="process__number" aria-hidden="true">03</div>
           <div class="process__icon">
             <i class="fas fa-face-smile-beam"></i>
@@ -366,28 +434,28 @@
   <!-- ===== STATS ===== -->
   <section class="stats">
     <div class="container stats__grid">
-      <div class="stat-item">
+      <div class="stat-item" data-reveal="zoom">
         <div class="stat-item__icon"><i class="fas fa-users"></i></div>
         <div class="stat-item__value">
           <span class="counter" data-target="10000">0</span><span>+</span>
         </div>
         <p>Happy Customers</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal="zoom" style="--delay:.08s">
         <div class="stat-item__icon"><i class="fas fa-house"></i></div>
         <div class="stat-item__value">
           <span class="counter" data-target="50000">0</span><span>+</span>
         </div>
         <p>Homes Cleaned</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal="zoom" style="--delay:.16s">
         <div class="stat-item__icon"><i class="fas fa-user-check"></i></div>
         <div class="stat-item__value">
           <span class="counter" data-target="500">0</span><span>+</span>
         </div>
         <p>Expert Cleaners</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal="zoom" style="--delay:.24s">
         <div class="stat-item__icon"><i class="fas fa-award"></i></div>
         <div class="stat-item__value">
           <span class="counter" data-target="15">0</span><span>+</span>
@@ -397,10 +465,38 @@
     </div>
   </section>
 
+  <!-- ===== GALLERY STRIP ===== -->
+  <section class="gallery" aria-label="Our work gallery">
+    <div class="gallery__header">
+      <span>Our Results Speak for Themselves</span>
+    </div>
+    <div class="gallery__track-wrapper">
+      <div class="gallery__track" id="galleryTrack">
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80&fit=crop" alt="Clean kitchen" loading="lazy"><span class="gallery__label">Kitchen Deep Clean</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&q=80&fit=crop" alt="Bright kitchen" loading="lazy"><span class="gallery__label">Residential Clean</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&fit=crop" alt="Clean office" loading="lazy"><span class="gallery__label">Office Cleaning</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80&fit=crop" alt="Clean living room" loading="lazy"><span class="gallery__label">Living Room Refresh</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1527515545081-5db817172677?w=400&q=80&fit=crop" alt="Professional cleaning" loading="lazy"><span class="gallery__label">Professional Service</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80&fit=crop" alt="Window cleaning" loading="lazy"><span class="gallery__label">Window Cleaning</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=400&q=80&fit=crop" alt="Move out clean" loading="lazy"><span class="gallery__label">Move-Out Clean</span></div>
+        <div class="gallery__item"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80&fit=crop" alt="Sparkling results" loading="lazy"><span class="gallery__label">Sparkling Results</span></div>
+        <!-- duplicated for seamless loop -->
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Kitchen Deep Clean</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Residential Clean</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Office Cleaning</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Living Room Refresh</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1527515545081-5db817172677?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Professional Service</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Window Cleaning</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Move-Out Clean</span></div>
+        <div class="gallery__item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80&fit=crop" alt="" loading="lazy"><span class="gallery__label">Sparkling Results</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PRICING ===== -->
   <section class="pricing section" id="pricing">
     <div class="container">
-      <div class="section__header">
+      <div class="section__header" data-reveal="fade-up">
         <span class="section__tag">Our Plans</span>
         <h2 class="section__title">Simple, Transparent <span>Pricing</span></h2>
         <p class="section__subtitle">No hidden fees. Choose the plan that fits your home and budget.</p>
@@ -418,7 +514,7 @@
       </div>
 
       <div class="pricing__grid">
-        <div class="pricing-card">
+        <div class="pricing-card" data-tilt data-reveal="fade-up" style="--delay:0s">
           <div class="pricing-card__header">
             <div class="pricing-card__icon">
               <i class="fas fa-leaf"></i>
@@ -442,7 +538,7 @@
           <a href="#contact" class="btn btn--outline btn--full">Book Basic</a>
         </div>
 
-        <div class="pricing-card pricing-card--popular">
+        <div class="pricing-card pricing-card--popular" data-tilt data-reveal="fade-up" style="--delay:.1s">
           <div class="pricing-card__ribbon">Most Popular</div>
           <div class="pricing-card__header">
             <div class="pricing-card__icon">
@@ -464,10 +560,10 @@
             <li class="yes"><i class="fas fa-check"></i> Light Deep Clean</li>
             <li class="no"><i class="fas fa-xmark"></i> Window Cleaning</li>
           </ul>
-          <a href="#contact" class="btn btn--primary btn--full">Book Standard</a>
+          <a href="#contact" class="btn btn--primary btn--full" data-magnetic>Book Standard</a>
         </div>
 
-        <div class="pricing-card">
+        <div class="pricing-card" data-tilt data-reveal="fade-up" style="--delay:.2s">
           <div class="pricing-card__header">
             <div class="pricing-card__icon">
               <i class="fas fa-gem"></i>
@@ -497,7 +593,7 @@
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials section" id="testimonials">
     <div class="container">
-      <div class="section__header">
+      <div class="section__header" data-reveal="fade-up">
         <span class="section__tag">Customer Reviews</span>
         <h2 class="section__title">What Our Clients <span>Say</span></h2>
         <p class="section__subtitle">Don't take our word for it. Here's what our happy customers have to say.</p>
@@ -507,10 +603,11 @@
         <div class="testimonials__track" id="testimonialsTrack">
 
           <div class="testimonial-card">
+            <div class="testimonial-card__quote"><i class="fas fa-quote-left"></i></div>
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <p>"Oasis Cleaning Solutions completely transformed my home! The team was professional, thorough, and paid attention to every detail. My apartment has never looked this good. Highly recommend to everyone!"</p>
+            <p>"Oasis Cleaning Solutions completely transformed my home! The team was professional, thorough, and paid attention to every detail. My apartment has never looked this good."</p>
             <div class="testimonial-card__author">
               <div class="avatar" style="background: linear-gradient(135deg,#667eea,#764ba2)">S</div>
               <div>
@@ -521,10 +618,11 @@
           </div>
 
           <div class="testimonial-card">
+            <div class="testimonial-card__quote"><i class="fas fa-quote-left"></i></div>
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <p>"We use Oasis Cleaning Solutions for our office every week and the results are consistently outstanding. Reliable, efficient, and our employees love coming to a spotless workspace. Best service ever."</p>
+            <p>"We use Oasis Cleaning Solutions for our office every week and the results are consistently outstanding. Reliable, efficient, and our employees love coming to a spotless workspace."</p>
             <div class="testimonial-card__author">
               <div class="avatar" style="background: linear-gradient(135deg,#f093fb,#f5576c)">M</div>
               <div>
@@ -535,10 +633,11 @@
           </div>
 
           <div class="testimonial-card">
+            <div class="testimonial-card__quote"><i class="fas fa-quote-left"></i></div>
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <p>"Booked the move-out cleaning and got my full deposit back! The apartment looked better than when I moved in. The cleaners were fast, polite, and incredibly thorough. Worth every penny!"</p>
+            <p>"Booked the move-out cleaning and got my full deposit back! The apartment looked better than when I moved in. Fast, polite, and incredibly thorough. Worth every penny!"</p>
             <div class="testimonial-card__author">
               <div class="avatar" style="background: linear-gradient(135deg,#4facfe,#00f2fe)">E</div>
               <div>
@@ -549,10 +648,11 @@
           </div>
 
           <div class="testimonial-card">
+            <div class="testimonial-card__quote"><i class="fas fa-quote-left"></i></div>
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <p>"I've tried many cleaning services but Oasis Cleaning Solutions is on another level. Eco-friendly products are so important for my kids and pets. Quality is consistently excellent — couldn't be happier!"</p>
+            <p>"I've tried many cleaning services but Oasis Cleaning Solutions is on another level. Eco-friendly products are so important for my kids and pets. Quality is consistently excellent!"</p>
             <div class="testimonial-card__author">
               <div class="avatar" style="background: linear-gradient(135deg,#43e97b,#38f9d7)">D</div>
               <div>
@@ -563,10 +663,11 @@
           </div>
 
           <div class="testimonial-card">
+            <div class="testimonial-card__quote"><i class="fas fa-quote-left"></i></div>
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <p>"Scheduling is super easy, the cleaners always arrive on time, and the results speak for themselves. I've been a Oasis Cleaning Solutions customer for 3 years and wouldn't trust anyone else with my home."</p>
+            <p>"Scheduling is super easy, the cleaners always arrive on time, and the results speak for themselves. I've been an Oasis customer for 3 years and wouldn't trust anyone else with my home."</p>
             <div class="testimonial-card__author">
               <div class="avatar" style="background: linear-gradient(135deg,#fa709a,#fee140)">A</div>
               <div>
@@ -594,14 +695,14 @@
   <!-- ===== FAQ ===== -->
   <section class="faq section">
     <div class="container">
-      <div class="section__header">
+      <div class="section__header" data-reveal="fade-up">
         <span class="section__tag">FAQ</span>
         <h2 class="section__title">Frequently Asked <span>Questions</span></h2>
         <p class="section__subtitle">Got questions? We've got clear answers.</p>
       </div>
 
       <div class="faq__grid">
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:0s">
           <button class="faq-item__q" aria-expanded="false">
             How long does a standard cleaning take?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -610,7 +711,7 @@
             <p>Duration depends on the size of your home. A standard cleaning for a 2-bedroom apartment typically takes 2–3 hours. Deep cleaning may take 4–6 hours. We'll give you an accurate estimate when you book.</p>
           </div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:.06s">
           <button class="faq-item__q" aria-expanded="false">
             Do I need to provide cleaning supplies?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -619,7 +720,7 @@
             <p>No! Our team brings all necessary supplies and equipment. We use professional-grade, eco-friendly products. If you have specific preferences, just let us know when you book.</p>
           </div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:.12s">
           <button class="faq-item__q" aria-expanded="false">
             Are your cleaners background-checked?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -628,7 +729,7 @@
             <p>Absolutely. Every Oasis Cleaning Solutions team member undergoes thorough background checks, identity verification, and an in-person interview before joining. They're also fully insured and receive regular ongoing training.</p>
           </div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:.18s">
           <button class="faq-item__q" aria-expanded="false">
             What if I'm not satisfied with the cleaning?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -637,7 +738,7 @@
             <p>Your satisfaction is guaranteed. Contact us within 24 hours and we'll send a team back to re-clean the area at absolutely no extra charge. No questions asked.</p>
           </div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:.24s">
           <button class="faq-item__q" aria-expanded="false">
             Can I reschedule or cancel my booking?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -646,7 +747,7 @@
             <p>Yes! You can reschedule or cancel up to 24 hours before your appointment with no fee. Changes within 24 hours may incur a small fee. Manage bookings via our website or by calling us directly.</p>
           </div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-reveal="fade-up" style="--delay:.3s">
           <button class="faq-item__q" aria-expanded="false">
             Do you offer discounts for recurring services?
             <span class="faq-icon" aria-hidden="true"><i class="fas fa-plus"></i></span>
@@ -662,7 +763,7 @@
   <!-- ===== CONTACT / BOOKING ===== -->
   <section class="contact section" id="contact">
     <div class="container contact__container">
-      <div class="contact__info">
+      <div class="contact__info" data-reveal="fade-right">
         <span class="section__tag">Get In Touch</span>
         <h2 class="section__title">Book Your <span>Cleaning Today</span></h2>
         <p class="contact__lead">Fill out the form and we'll get back to you within 2 hours with a custom quote. No commitment needed.</p>
@@ -699,7 +800,7 @@
         </div>
       </div>
 
-      <div class="contact__form-box">
+      <div class="contact__form-box" data-reveal="fade-left">
         <form id="bookingForm" class="booking-form" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -749,7 +850,7 @@
             <label for="message">Additional Notes</label>
             <textarea id="message" name="message" rows="4" placeholder="Property size, special instructions, access details..."></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--full btn--lg">
+          <button type="submit" class="btn btn--primary btn--full btn--lg" data-magnetic>
             <i class="fas fa-paper-plane"></i>
             Request My Free Quote
           </button>
